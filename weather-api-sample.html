@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Weather API</title>
+</head>
+<body>
+
+<script>
+    async function getWeather() {
+    const weather = await fetch(
+    "https://api.openweathermap.org/data/2.5/weather?lat=30.2604&lon=-97.714&appid=8afaf7a43152052195b32a7e4924e1db"
+  );
+
+    const weatherObject = await weather.json();
+    console.log(weatherObject);
+    }   
+</script>
+    <button type="button" onclick=getWeather()>Get Weather</button>
+</body>
+</html>
+
