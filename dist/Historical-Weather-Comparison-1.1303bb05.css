@@ -1,0 +1,60 @@
+body {
+  color: #fff;
+  background: #2e84db;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: Tahoma, Verdana;
+  display: flex;
+}
+
+header {
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.info-container {
+  background: #ffffff1a;
+  border-radius: 10px;
+  margin: 2rem;
+  padding: 2rem;
+  box-shadow: 0 4px 12px #0003;
+}
+
+input[type="text"] {
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  margin-right: 1rem;
+  padding: .6rem 1rem;
+  font-size: 1rem;
+}
+
+button {
+  color: #2193b0;
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: .6rem 1.2rem;
+  font-size: 1rem;
+  transition: background-color .3s;
+}
+
+button:hover {
+  background-color: #cecece;
+}
+
+#output {
+  text-align: center;
+  background-color: #fff3;
+  border-radius: 8px;
+  max-width: 80%;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+}
+/*# sourceMappingURL=Historical-Weather-Comparison-1.1303bb05.css.map */

@@ -17,7 +17,7 @@
             const weatherInfo = await response.json();
             console.log(weatherInfo);
 
-            document.getElementById('output').innerText = `In ${weatherInfo.name}, it is ${weatherInfo.main.temp}°F with ${weatherInfo.weather[0].description}.`;
+            document.getElementById('output').innerText = `In ${weatherInfo.name}, it is ${Math.floor(weatherInfo.main.temp)}°F with ${weatherInfo.weather[0].description}.`;
         } catch (error){
             console.log("Error:", error);
             document.getElementById('output').innerText = "Could not obtain weather.";
@@ -47,7 +47,7 @@
 
             const forecast = forecastData.list[0];
 
-            document.getElementById('output').innerText = `Forecast for ${forecastData.city.name}:\n ${forecast.dt_txt} will be ${forecast.main.temp}°F with ${forecast.weather[0].description} ${forecast.weather[0].icon}`;
+            document.getElementById('output').innerText = `Forecast for ${forecastData.city.name}:\n ${forecast.dt_txt} will be ${Math.floor(forecast.main.temp)}°F with ${forecast.weather[0].description} ${forecast.weather[0].icon}`;
             } catch (error) {
             console.log("Error:", error);
             document.getElementById('output').innerText = "Could not obtain forecast.";
