@@ -1,12 +1,13 @@
         async function getWeather() {
             const location = document.getElementById("Location").value;
+            const apiKey = process.env.API_KEY;
             if (!location) {
                 alert("Please enter a valid location!");
                 return;
             }
 
             try {const response = await fetch(
-                `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=8afaf7a43152052195b32a7e4924e1db&units=imperial`
+                `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=imperial`
             ); 
 
             if (!response.ok) {
@@ -22,3 +23,4 @@
             document.getElementById('output').innerText = "Could not obtain weather.";
          }
         }
+        window.getWeather = getWeather;
