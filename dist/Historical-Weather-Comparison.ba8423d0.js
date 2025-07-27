@@ -686,6 +686,26 @@ async function getWeather() {
     }
 }
 window.getWeather = getWeather;
+async function getForecast() {
+    const location = document.getElementById("Location").value;
+    const apiKey = "8afaf7a43152052195b32a7e4924e1db";
+    if (!location) {
+        alert("Please enter a valid location!");
+        return;
+    }
+    try {
+        const response = await fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${location},us&units=imperial&appid=${apiKey}`);
+        if (!response.ok) throw new Error("No forecast found...");
+        const forecastData = await response.json();
+        console.log(forecastData);
+        const forecast = forecastData.list[0];
+        document.getElementById('output').innerText = `Forecast for ${forecastData.city.name}:\n ${forecast.dt_txt} will be ${forecast.main.temp}\xb0F with ${forecast.weather[0].description} ${forecast.weather[0].icon}`;
+    } catch (error) {
+        console.log("Error:", error);
+        document.getElementById('output').innerText = "Could not obtain forecast.";
+    }
+}
+window.getForecast = getForecast;
 
 },{}]},["d6Gpa","4kLc5"], "4kLc5", "parcelRequire5958", {})
 
