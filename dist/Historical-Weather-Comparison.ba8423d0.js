@@ -160,11 +160,11 @@
       });
     }
   }
-})({"d6Gpa":[function(require,module,exports,__globalThis) {
+})({"6RJg3":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 1234;
+var HMR_SERVER_PORT = 53505;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -675,7 +675,7 @@ async function getWeather() {
         return;
     }
     try {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=imperial`);
+        const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${location},us&units=imperial&appid=${apiKey}`);
         if (!response.ok) throw new Error("No weather found...");
         const weatherInfo = await response.json();
         console.log(weatherInfo);
@@ -687,6 +687,6 @@ async function getWeather() {
 }
 window.getWeather = getWeather;
 
-},{}]},["d6Gpa","4kLc5"], "4kLc5", "parcelRequire5958", {})
+},{}]},["6RJg3","4kLc5"], "4kLc5", "parcelRequire5958", {})
 
 //# sourceMappingURL=Historical-Weather-Comparison.ba8423d0.js.map

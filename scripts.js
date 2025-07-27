@@ -7,7 +7,7 @@
             }
 
             try {const response = await fetch(
-                `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=imperial`
+                `http://api.openweathermap.org/data/2.5/weather?zip=${location},us&units=imperial&appid=${apiKey}`
             ); 
 
             if (!response.ok) {
