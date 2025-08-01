@@ -160,11 +160,11 @@
       });
     }
   }
-})({"fDgAF":[function(require,module,exports,__globalThis) {
+})({"6lKFr":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 55004;
+var HMR_SERVER_PORT = 49862;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -697,21 +697,55 @@ async function getForecast() {
         const response = await fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${location},us&units=imperial&appid=${apiKey}`);
         if (!response.ok) throw new Error("No forecast found...");
         const forecastData = await response.json();
-        console.log(forecastData);
-        const forecast = forecastData.list[0];
-        const forecastIcon = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
         console.log(forecastData.list);
-        document.getElementById('output').innerHTML = `
-                Forecast for ${forecastData.city.name}:<br>
-                <img src="${forecastIcon}" alt="${forecast.weather[0].description}"/><br>
-                ${forecast.dt_txt} will be ${Math.floor(forecast.main.temp)}\xb0F with ${forecast.weather[0].description}.`;
+        const dailyData = {};
+        forecastData.list.forEach((item)=>{
+            const date = item.dt_txt.split(' ')[0];
+            if (!dailyData[date]) dailyData[date] = {
+                temps: [],
+                middayForecast: null
+            };
+            dailyData[date].temps.push(item.main.temp);
+            if (item.dt_txt.includes("12:00:00")) dailyData[date].middayForecast = item;
+        });
+        const days = Object.keys(dailyData).slice(0, 5);
+        let outputHTML = `5-Day Forecast for ${forecastData.city.name}:<br><br>`;
+        days.forEach((date)=>{
+            const temps = dailyData[date].temps;
+            const high = Math.round(Math.max(...temps));
+            const low = Math.round(Math.min(...temps));
+            const forecast = dailyData[date].middayForecast || forecastData.list.find((f)=>f.dt_txt.startsWith(date));
+            const icon = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
+            const description = forecast.weather[0].description;
+            outputHTML += `
+                <strong>${date}</strong><br>
+                <img src = "${icon}" alt = "${description}" /><br>
+                High: ${high}\xb0F | Low: ${low}\xb0F<br>
+                ${description}<br><br>
+                `;
+        });
+        document.getElementById('output').innerHTML = outputHTML;
     } catch (error) {
         console.log("Error:", error);
         document.getElementById('output').innerText = "Could not obtain forecast.";
     }
 }
-window.getForecast = getForecast;
+window.getForecast = getForecast; /*const forecast = forecastData.list[0];
+            const forecastIcon = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
+            console.log(forecastData.list);
 
-},{}]},["fDgAF","4kLc5"], "4kLc5", "parcelRequire5958", {})
+            
+            document.getElementById('output').innerHTML = `
+                Forecast for ${forecastData.city.name}:<br>
+                <img src="${forecastIcon}" alt="${forecast.weather[0].description}"/><br>
+                ${forecast.dt_txt} will be ${Math.floor(forecast.main.temp)}°F with ${forecast.weather[0].description}.`;
+            } catch (error) {
+            console.log("Error:", error);
+            document.getElementById('output').innerText = "Could not obtain forecast.";
+            }
+        }
+        window.getForecast = getForecast; */ 
+
+},{}]},["6lKFr","4kLc5"], "4kLc5", "parcelRequire5958", {})
 
 //# sourceMappingURL=Historical-Weather-Comparison-1.ba8423d0.js.map
