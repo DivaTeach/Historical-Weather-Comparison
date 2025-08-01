@@ -160,11 +160,11 @@
       });
     }
   }
-})({"cv7aZ":[function(require,module,exports,__globalThis) {
+})({"7mqoR":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 52942;
+var HMR_SERVER_PORT = 53645;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -707,6 +707,6 @@ async function getForecast() {
 }
 window.getForecast = getForecast;
 
-},{}]},["cv7aZ","4kLc5"], "4kLc5", "parcelRequire5958", {})
+},{}]},["7mqoR","4kLc5"], "4kLc5", "parcelRequire5958", {})
 
 //# sourceMappingURL=Historical-Weather-Comparison-1.ba8423d0.js.map
