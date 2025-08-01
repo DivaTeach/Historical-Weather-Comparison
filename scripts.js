@@ -46,8 +46,13 @@
             console.log(forecastData);
 
             const forecast = forecastData.list[0];
+            const forecastIcon = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
 
-            document.getElementById('output').innerText = `Forecast for ${forecastData.city.name}:\n ${forecast.dt_txt} will be ${Math.floor(forecast.main.temp)}°F with ${forecast.weather[0].description} ${forecast.weather[0].icon}`;
+            
+            document.getElementById('output').innerHTML = `
+                Forecast for ${forecastData.city.name}:<br>
+                <img src="${forecastIcon}" alt="${forecast.weather[0].description}"/><br>
+                ${forecast.dt_txt} will be ${Math.floor(forecast.main.temp)}°F with ${forecast.weather[0].description}.`;
             } catch (error) {
             console.log("Error:", error);
             document.getElementById('output').innerText = "Could not obtain forecast.";
