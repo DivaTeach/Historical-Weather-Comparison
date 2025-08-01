@@ -47,6 +47,7 @@
 
             const forecast = forecastData.list[0];
             const forecastIcon = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
+            console.log(forecastData.list);
 
             
             document.getElementById('output').innerHTML = `

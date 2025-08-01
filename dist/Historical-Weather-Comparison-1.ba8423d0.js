@@ -160,11 +160,11 @@
       });
     }
   }
-})({"axu04":[function(require,module,exports,__globalThis) {
+})({"fDgAF":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 54963;
+var HMR_SERVER_PORT = 55004;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -699,7 +699,12 @@ async function getForecast() {
         const forecastData = await response.json();
         console.log(forecastData);
         const forecast = forecastData.list[0];
-        document.getElementById('output').innerText = `Forecast for ${forecastData.city.name}:\n ${forecast.dt_txt} will be ${Math.floor(forecast.main.temp)}\xb0F with ${forecast.weather[0].description} ${forecast.weather[0].icon}`;
+        const forecastIcon = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
+        console.log(forecastData.list);
+        document.getElementById('output').innerHTML = `
+                Forecast for ${forecastData.city.name}:<br>
+                <img src="${forecastIcon}" alt="${forecast.weather[0].description}"/><br>
+                ${forecast.dt_txt} will be ${Math.floor(forecast.main.temp)}\xb0F with ${forecast.weather[0].description}.`;
     } catch (error) {
         console.log("Error:", error);
         document.getElementById('output').innerText = "Could not obtain forecast.";
@@ -707,6 +712,6 @@ async function getForecast() {
 }
 window.getForecast = getForecast;
 
-},{}]},["axu04","4kLc5"], "4kLc5", "parcelRequire5958", {})
+},{}]},["fDgAF","4kLc5"], "4kLc5", "parcelRequire5958", {})
 
 //# sourceMappingURL=Historical-Weather-Comparison-1.ba8423d0.js.map
